@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-teal-200">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-600">Login</h2>
+    <form method="POST" class="space-y-4">
+      {{ form.hidden_tag() }}
+      
+      <!-- Email -->
+      <div>
+        <div class="flex items-center space-x-2">
+          {{ form.email.label(class="block text-gray-600 mb-1") }} <span class="text-red-500">*</span>
+        </div>
+        {{ form.email(class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500") }}
+      </div>
+      
+      <!-- Password -->
+      <div>
+        <div class="flex items-center space-x-2">
+          {{ form.password.label(class="block text-gray-600 mb-1") }} <span class="text-red-500">*</span>
+        </div>
+        {{ form.password(class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500") }}
+      </div>
+      
+      <!-- Remember Me & Forgot Password -->
+      <div class="flex items-center justify-between">
+        <label class="inline-flex items-center">
+          <input type="checkbox" name="remember" class="form-checkbox h-4 w-4 text-teal-600">
+          <span class="ml-2 text-gray-600 text-sm">Remember Me</span>
+        </label>
+        <a href="{{ url_for('reset_request') }}" class="text-teal-600 text-sm hover:underline">Forgot Password?</a>
+      </div>
+      
+      <!-- Submit -->
+      <div>
+        {{ form.submit(class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded-lg transition-colors duration-200") }}
+      </div>
+    </form>
+    
+    <p class="text-center mt-4 text-gray-600">
+      Don't have an account? 
+      <a href="{{ url_for('register') }}" class="text-teal-600 font-medium hover:underline">Register</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
